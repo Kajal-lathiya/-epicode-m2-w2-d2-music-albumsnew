@@ -1,0 +1,62 @@
+.album-image {
+    width: 100%;
+    object-fit: cover;
+    height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+
+.jumbotron {
+    background-image: url("https://www.musicroom.com/content/files/Musicroom/Campaigns/Back%202%20School%202022/Shaded/956x500_SeniorDiscount.jpg");
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    opacity: o.5;
+    animation: fadeIn 1s both 0.5s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.35;
+    }
+    55% {
+        opacity: 0.65;
+    }
+    78% {
+        opacity: 0.45;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.card-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.card {
+    position: relative;
+}
+
+.bagdeImage {
+    object-fit: cover;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: -10px;
+    left: -5px;
+}
