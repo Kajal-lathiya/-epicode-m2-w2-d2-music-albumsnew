@@ -13,21 +13,21 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
         <div class="container">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <img src="./Images/logo.png" height="100" alt="logo" />
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a
+                        <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a
               >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#FavoriteList">Favorite Albums</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Worst Albums</a>
+                        <a class="nav-link" href="#WorstList">Worst Albums</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -54,7 +54,7 @@
         </div>
     </nav>
 
-    <div class="jumbotron">
+    <div class="jumbotron" id="home">
         <h1 class="display-4 font-weight-bolder">Classical Music</h1>
         <p class="lead">
             Mariah Carey released Daydream on October 3, 1995 via Columbia Records. It was her fifth studio album.
@@ -66,7 +66,8 @@
         <a class="btn btn-primary bg-success border-success btn-lg font-weight-bold" href="https://www.youtube.com/results?search_query=Mariah+Carey%2C+Daydream" role="button">Learn more</a
       >
     </div>
-    <div class="container-fluid px-5">
+
+    <div class="container-fluid px-5" id="FavoriteList">
       <h3 class="font-weight-bolder">Favorite Albums</h3>
       <div class="row mx-n1 mb-3">
         <div
@@ -155,68 +156,31 @@
         </div>
       </div>
     </div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Track Order No</th>
-          <th scope="col">Title</th>
-          <th scope="col">Artist Name</th>
-          <th scope="col">Track Duration</th>
-          <th scope="col">
-            <button type="button" class="btn btn-success shadow rounded">
-              ADD TRACK
-            </button>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mariah Carey</td>
-          <td>Daydream (10 million)</td>
-          <td>1995</td>
-          <td class="d-flex justify-content-end">
-            <button type="button" class="btn btn-danger shadow rounded">
-              DELETE
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Madonna</td>
-          <td>Like a Virgin (10 million)</td>
-          <td>2002</td>
-          <td class="d-flex justify-content-end">
-            <button type="button" class="btn btn-danger shadow rounded">
-              DELETE
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Lionel Richie</td>
-          <td>Can't Slow Down (10 million)</td>
-          <td>1995</td>
-          <td class="d-flex justify-content-end">
-            <button type="button" class="btn btn-danger shadow rounded">
-              DELETE
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">4</th>
-          <td>Zeppelin</td>
-          <td>Led Zeppelin (10 million)</td>
-          <td>2006</td>
-          <td class="d-flex justify-content-end">
-            <button type="button" class="btn btn-danger shadow rounded">
-              DELETE
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="container" id="FavoriteList">
+    <div class="container-fluid px-5">
+      <h3>Track List</h3>
+      <table class="table border mt-2" id="trackList">
+        <thead>
+          <tr>
+            <th scope="col">Track Order No</th>
+            <th scope="col">Title</th>
+            <th scope="col">Artist Name</th>
+            <th scope="col">Track Duration</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+      <button
+        type="button"
+        data-toggle="modal"
+        data-target="#trackmodal"
+        class="btn btn-success shadow rounded mb-3"
+      >
+        ADD TRACK
+      </button>
+    </div>
+    <div class="container-fluid px-5" id="WorstList">
+      <h3 class="font-weight-bolder">Worst Albums</h3>
+
       <div class="row">
         <div class="col-sm-6 col-md-4 col-xl-3">
           <div class="">
@@ -304,7 +268,7 @@
                 Led Zeppelin II is the second studio album the English rock band
                 produced. Atlantic Records released it in America on October 22,
                 1969 and in the UK on October 31, 1969. Led Zeppelin II was the
-                band’s first album to reach number one on the charts in both the
+                band's first album to reach number one on the charts in both the
                 UK and the US.
               </p>
               <a
@@ -317,7 +281,80 @@
         </div>
       </div>
     </div>
+    <div class="modal" tabindex="-1" id="trackmodal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Track</h5>
 
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body mx-3">
+            <div class="row justify-content-around">
+              <input
+                class="col mr-3"
+                type="number"
+                name="id"
+                id="trackId"
+                value=""
+                placeholder="Enter id"
+              />
+              <input
+                class="col"
+                type="text"
+                id="trackName"
+                name="name"
+                value=""
+                placeholder="Enter artist name"
+              />
+            </div>
+            <div class="row mt-3 align-content-lg-between">
+              <input
+                class="col mr-3"
+                type="text"
+                id="trackTitle"
+                name="title"
+                value=""
+                placeholder="Enter title"
+              />
+              <input
+                class="col"
+                type="number"
+                name="duration"
+                id="trackDuration"
+                value=""
+                placeholder="Enter duration"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              data-dismiss="modal"
+              id="btnsubmit"
+              class="btn btn-primary"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./script.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
